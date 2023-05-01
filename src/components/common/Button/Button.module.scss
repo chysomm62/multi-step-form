@@ -1,0 +1,17 @@
+.contained_btn {
+  background-color: var(--Marine-blue);
+  color: var(--White);
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn {
+  color: var(--Cool-gray);
+  background-color: inherit;
+
+  &:hover {
+    color: var(--Marine-blue);
+  }
+}

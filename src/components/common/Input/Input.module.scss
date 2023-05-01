@@ -1,0 +1,39 @@
+.Input_wrap {
+  width: 100%;
+
+  div {
+    margin-bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .label {
+    color: var(--Marine-blue);
+  }
+
+  .error {
+    color: var(--Strawberry-red);
+  }
+
+  .input {
+    border: 1px solid var(--Light-gray);
+    outline: 0;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    color: var(--Marine-blue);
+    font-weight: 500;
+    width: 100%;
+    display: block;
+    background-color: inherit;
+
+    &::placeholder {
+      color: var(--Cool-gray);
+    }
+
+    &:focus {
+      border: 1px solid var(--Marine-blue);
+    }
+  }
+}
