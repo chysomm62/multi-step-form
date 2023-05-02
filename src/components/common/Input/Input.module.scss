@@ -35,5 +35,9 @@
     &:focus {
       border: 1px solid var(--Marine-blue);
     }
+
+    &:user-invalid {
+      border: 1px solid var(--Strawberry-red);
+    }
   }
 }

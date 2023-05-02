@@ -64,9 +64,9 @@ a {
   text-decoration: inherit;
 }
 
-.app {
+body {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   min-height: 100vh;
@@ -84,4 +84,10 @@ button {
   transition: all 1s ease-out;
   font-weight: 600;
   font-size: 1rem;
+}
+
+@media screen and (min-width: 750px) {
+  body {
+    align-items: center;
+  }
 }
