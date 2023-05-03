@@ -9,17 +9,20 @@ const Sidebar = ({ active, setActive }) => {
   ];
 
   return (
-    <aside className={styles.sidebar}>
+    <section className={styles.sidebar}>
       <div className={styles.tabs}>
         {tabs.map((num, index) => (
-          <div key={index} className={styles.tab}>
+          <div
+            key={index}
+            className={styles.tab}
+            onClick={() => setActive(num.num)}
+          >
             <div
               className={
                 active === num.num
                   ? `${styles.active} ${styles.circle}`
                   : styles.circle
               }
-              onClick={() => setActive(num.num)}
             >
               <p> {num.num}</p>
             </div>
@@ -30,7 +33,7 @@ const Sidebar = ({ active, setActive }) => {
           </div>
         ))}
       </div>
-    </aside>
+    </section>
   );
 };
 

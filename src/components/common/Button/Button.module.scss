@@ -4,6 +4,7 @@
 
   &:hover {
     opacity: 0.9;
+    transition: all 1s ease-in;
   }
 }
 
@@ -13,5 +14,6 @@
 
   &:hover {
     color: var(--Marine-blue);
+    transition: all 1s ease-in;
   }
 }

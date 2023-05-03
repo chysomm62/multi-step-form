@@ -8,8 +8,8 @@ function App() {
 
   return (
     <div className={styles.app}>
+      <Form active={active} setActive={setActive} />
       <Sidebar active={active} setActive={setActive} />
-      <Form />
     </div>
   );
 }

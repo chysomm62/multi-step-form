@@ -1,13 +1,21 @@
 .app {
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 95vh;
 
   @media screen and (min-width: 750px) {
-    display: flex;
+    flex-direction: row-reverse;
     align-items: stretch;
+    width: 750px;
+    height: fit-content;
+    background-color: var(--White);
+    border-radius: 1rem;
+    padding: 1rem;
   }
 
-  @media screen and (min-width: 900px) {
-    width: 750px;
+  @media screen and (min-width: 850px) {
+    width: 850px;
   }
 }

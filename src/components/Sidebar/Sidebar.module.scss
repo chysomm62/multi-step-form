@@ -10,10 +10,12 @@
   .tabs {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: center;
 
     .tab {
+      cursor: pointer;
+
       .circle {
         border: 1px solid var(--Light-blue);
         border-radius: 50%;
@@ -22,7 +24,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        cursor: pointer;
+
         transition: all 1s ease-in-out;
 
         p {
