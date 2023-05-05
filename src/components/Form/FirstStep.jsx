@@ -1,7 +1,8 @@
+import ContainedButton from "../common/Button/ContainedButton";
 import Input from "../common/Input";
 import styles from "./Form.module.scss";
 
-const FirstStep = () => {
+const FirstStep = ({ active, setActive }) => {
   const formData = [
     { name: "name", label: "Name", placeholder: "e.g. Stephen King" },
     {
@@ -18,18 +19,29 @@ const FirstStep = () => {
 
   return (
     <>
-      <h1 className={styles.h1}>Personal info</h1>
-      <p>Please provide your name, email address and phone number.</p>
-      <form>
-        {formData.map((data, index) => (
-          <Input
-            key={index}
-            name={data.name}
-            label={data.label}
-            placeholder={data.placeholder}
-          />
-        ))}
-      </form>
+      <div className={styles.fields}>
+        <h1 className={styles.h1}>Personal info</h1>
+        <p>Please provide your name, email address and phone number.</p>
+        <form>
+          {formData.map((data, index) => (
+            <Input
+              key={index}
+              name={data.name}
+              label={data.label}
+              placeholder={data.placeholder}
+            />
+          ))}
+        </form>
+      </div>
+      <div className={styles.buttons}>
+        <div></div>
+        <ContainedButton
+          className={styles.next}
+          onClick={() => setActive(active + 1)}
+        >
+          Next Step
+        </ContainedButton>
+      </div>
     </>
   );
 };

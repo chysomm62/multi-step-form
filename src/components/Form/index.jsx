@@ -1,6 +1,4 @@
 import FirstStep from "./FirstStep";
-import Button from "../common/Button";
-import ContainedButton from "../common/Button/ContainedButton";
 import styles from "./Form.module.scss";
 import SecondStep from "./SecondStep";
 import ThirdStep from "./ThirdStep";
@@ -54,7 +52,7 @@ const Form = ({ active, setActive }) => {
   const getTabs = () => {
     switch (active) {
       case 1:
-        return <FirstStep />;
+        return <FirstStep active={active} setActive={setActive} />;
       case 2:
         return (
           <SecondStep
@@ -63,6 +61,8 @@ const Form = ({ active, setActive }) => {
             setPlanIndex={setPlanIndex}
             isDurationToggled={isDurationToggled}
             setIsDurationToggled={setIsDurationToggled}
+            active={active}
+            setActive={setActive}
           />
         );
       case 3:
@@ -71,6 +71,8 @@ const Form = ({ active, setActive }) => {
             addOns={addOns}
             selected={selected}
             setSelected={setSelected}
+            active={active}
+            setActive={setActive}
           />
         );
       case 4:
@@ -91,25 +93,7 @@ const Form = ({ active, setActive }) => {
 
   return (
     <section className={styles.form}>
-      <div className={styles.fields}>{getTabs()}</div>
-
-      <div className={styles.buttons}>
-        {active !== 1 ? (
-          <Button onClick={() => setActive(active - 1)}>Go Back</Button>
-        ) : (
-          <div></div>
-        )}
-        {active !== 4 ? (
-          <ContainedButton
-            className={styles.next}
-            onClick={() => setActive(active + 1)}
-          >
-            Next Step
-          </ContainedButton>
-        ) : (
-          <ContainedButton>Confirm</ContainedButton>
-        )}
-      </div>
+      <>{getTabs()}</>
     </section>
   );
 };

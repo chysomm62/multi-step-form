@@ -43,8 +43,6 @@ a {
 }
 
 body {
-  display: flex;
-  justify-content: center;
   font-size: 1rem;
   font-family: "Ubuntu", sans-serif;
   background-color: var(--Magnolia);
@@ -53,6 +51,8 @@ body {
 #root {
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 button {
@@ -67,7 +67,7 @@ button {
 }
 
 @media screen and (min-width: 750px) {
-  body {
+  #root {
     align-items: center;
     height: 100vh;
   }

@@ -309,6 +309,25 @@
       }
     }
 
+    .success {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      text-align: center;
+
+      img {
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        color: var(--Marine-blue);
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+    }
+
     @media screen and (min-width: 750px) {
       margin-top: 0;
       padding-left: 3rem;
