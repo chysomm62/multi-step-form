@@ -6,6 +6,11 @@
     opacity: 0.9;
     transition: all 1s ease-in;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    background-color: var(--Cool-gray);
+  }
 }
 
 .btn {

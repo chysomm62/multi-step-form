@@ -10,8 +10,9 @@ const FourthStep = ({
   setActive,
   addOns,
   selected,
+  active,
 }) => {
-  const [confirm, setConfirm] = useState(true);
+  const [confirm, setConfirm] = useState(false);
 
   return (
     <>
@@ -42,7 +43,6 @@ const FourthStep = ({
                         <div>
                           <p>{addOn.name}</p>
                         </div>
-                        {console.log(addOn.price)}
 
                         <div>
                           <h4 className={styles.price}>+${addOn.price}/mo</h4>

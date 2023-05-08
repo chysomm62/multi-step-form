@@ -84,6 +84,7 @@ const Form = ({ active, setActive }) => {
             setActive={setActive}
             addOns={addOns}
             selected={selected}
+            active={active}
           />
         );
       default:
