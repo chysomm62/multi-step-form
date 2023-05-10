@@ -2,12 +2,6 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import ContainedButton from "../common/Button/ContainedButton";
 import Input from "../common/Input";
 import styles from "./Form.module.scss";
-import {
-  mustBeEmail,
-  mustBeLettersOnly,
-  mustBePhone,
-  required,
-} from "../../utils/validation.util";
 
 const initialValues = {
   name: "",
@@ -38,10 +32,14 @@ const FirstStep = ({ active, setActive }) => {
   ];
 
   const handleSubmit = (values, helpers) => {
-    // helpers.setSubmitting(true);
-    // setActive(active + 1);
+    helpers.setSubmitting(true);
+    setActive(active + 1);
     console.log(values);
-    console.log(helpers);
+
+    setTimeout(() => {
+      helpers.setSubmitting(false);
+      // helpers.resetForm({ values });
+    }, 1000);
   };
 
   return (
@@ -51,15 +49,27 @@ const FirstStep = ({ active, setActive }) => {
         onSubmit={handleSubmit}
         validate={(values) => {
           const errors = {};
-
-          errors.name = required(values.name) || mustBeLettersOnly(values.name);
-
-          errors.email = required(values.email) || mustBeEmail(values.email);
-
-          errors.phone = required(values.phone) || mustBePhone(values.phone);
+          if (!values.name) {
+            errors.name = "Field is required";
+          }
+          if (!values.email) {
+            errors.email = "Field is required";
+          } else if (
+            !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
+          ) {
+            errors.email = "Invalid Email Address";
+          }
+          if (!values.phone) {
+            errors.phone = "Field is required";
+          } else if (
+            !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(values.phone)
+          ) {
+            errors.phone = "Invalid Phone Number";
+          }
 
           return errors;
         }}
+        np
       >
         {(formik) => (
           <Form>
@@ -85,13 +95,16 @@ const FirstStep = ({ active, setActive }) => {
             <div className={styles.buttons}>
               <div></div>
               <ContainedButton
-                disabled={formik.isSubmitting || !formik.isValid}
+                disabled={
+                  formik.isSubmitting || !(formik.isValid && formik.dirty)
+                }
                 className={styles.next}
                 type="submit"
               >
                 Next Step
               </ContainedButton>
             </div>
+            {console.log(formik.values)}
           </Form>
         )}
       </Formik>

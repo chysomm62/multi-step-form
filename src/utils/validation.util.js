@@ -38,7 +38,9 @@ export const mustBeEmail = (value) =>
     : undefined;
 
 export const mustBePhone = (value) =>
-  !!/^-?\d+\.?\d*$/.test(value) ? "Invalid Phone" : undefined;
+  !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(value)
+    ? "Invalid Phone Number"
+    : undefined;
 
 // /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,50}$/
 
