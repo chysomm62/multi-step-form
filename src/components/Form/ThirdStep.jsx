@@ -53,6 +53,7 @@ const ThirdStep = ({ addOns, selected, setSelected, active, setActive }) => {
         <ContainedButton
           className={styles.next}
           onClick={() => setActive(active + 1)}
+          disabled={!selected.length}
         >
           Next Step
         </ContainedButton>
