@@ -15,7 +15,7 @@ const Sidebar = ({ active, setActive }) => {
           <div
             key={index}
             className={styles.tab}
-            onClick={() => setActive(num.num)}
+            // onClick={() => setActive(num.num)}
           >
             <div
               className={
