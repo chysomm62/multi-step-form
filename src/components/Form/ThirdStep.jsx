@@ -4,10 +4,14 @@ import styles from "./Form.module.scss";
 
 const ThirdStep = ({ addOns, selected, setSelected, active, setActive }) => {
   const handleChange = (e, index) => {
-    if (e.target.checked && !selected.includes(index)) {
+    const { target } = e;
+    if (target.checked) {
       setSelected([...selected, index]);
+      // target.setAttribute("checked", true);
     } else {
       selected.splice(selected.indexOf(index), 1);
+
+      // target.removeAttribute(checked);
     }
   };
 
@@ -21,17 +25,19 @@ const ThirdStep = ({ addOns, selected, setSelected, active, setActive }) => {
             <div
               key={addOn.name}
               className={
-                !selected.includes(index)
-                  ? styles.addOn
-                  : `${styles.selected} ${styles.addOn}`
+                selected.includes(index)
+                  ? `${styles.selected} ${styles.addOn}`
+                  : styles.addOn
               }
             >
               <div className={styles.first_child}>
                 <label className={styles.checkbox}>
                   <input
                     type="checkbox"
-                    checked={selected.includes(index)}
-                    onChange={(e) => handleChange(e, index)}
+                    defaultChecked={
+                      selected.includes(index) === true ? true : false
+                    }
+                    onClick={(e) => handleChange(e, index)}
                   />
                   <span className={styles.checkmark} />
                 </label>
