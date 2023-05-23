@@ -309,6 +309,20 @@
       }
     }
 
+    .total {
+      display: flex;
+      padding: 1.75rem 1rem 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+
+      h4 {
+        color: var(--Purplish-blue);
+        font-weight: 700;
+        font-size: larger;
+      }
+    }
+
     .success {
       display: flex;
       flex-direction: column;

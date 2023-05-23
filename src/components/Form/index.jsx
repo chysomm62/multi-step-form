@@ -48,6 +48,7 @@ const Form = ({ active, setActive }) => {
 
   // third step
   const [selected, setSelected] = useState([]);
+  const [totalAmount, setTotalAmount] = useState([]);
 
   const getTabs = () => {
     switch (active) {

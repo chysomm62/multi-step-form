@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.scss";
 import Button from "../common/Button";
 import ContainedButton from "../common/Button/ContainedButton";
@@ -13,6 +13,14 @@ const FourthStep = ({
   active,
 }) => {
   const [confirm, setConfirm] = useState(false);
+  const planRef = useRef(null);
+  const addOnRef = useRef(null);
+
+  const totalAmount = [];
+
+  totalAmount.push(
+    isDurationToggled ? plans[planIndex].price * 12 : plans[planIndex].price
+  );
 
   return (
     <>
@@ -33,24 +41,57 @@ const FourthStep = ({
                   </h3>
                   <button onClick={() => setActive(2)}>Change</button>
                 </div>
-                <h4>${plans[planIndex].price}/mo</h4>
+                <h4>
+                  $
+                  <span ref={planRef}>
+                    {isDurationToggled
+                      ? plans[planIndex].price * 12
+                      : plans[planIndex].price}
+                  </span>
+                  /{isDurationToggled ? "yr" : "mo"}
+                </h4>
               </div>
               <div className={styles.addSum}>
                 {addOns.map((addOn, index) => {
                   if (selected.includes(index)) {
+                    totalAmount.push(
+                      isDurationToggled ? addOn.price * 12 : addOn.price
+                    );
                     return (
                       <div key={addOn.name} className={styles.addOn}>
                         <div>
                           <p>{addOn.name}</p>
                         </div>
-
                         <div>
-                          <h4 className={styles.price}>+${addOn.price}/mo</h4>
+                          <h4 className={styles.price}>
+                            $
+                            <span ref={addOnRef}>
+                              {isDurationToggled
+                                ? addOn.price * 12
+                                : addOn.price}
+                            </span>
+                            /{isDurationToggled ? "yr" : "mo"}
+                          </h4>
                         </div>
                       </div>
                     );
                   }
                 })}
+              </div>
+            </div>
+
+            <div className={styles.total}>
+              <div>
+                <p>Total ({isDurationToggled ? "per year" : "per month"})</p>
+              </div>
+
+              <div>
+                <h4 className={styles.price}>
+                  +$
+                  {/* {isDurationToggled ? addOn.price * 12 : addOn.price}/ */}
+                  {totalAmount.reduce((result, num) => result + num)}
+                  {isDurationToggled ? "yr" : "mo"}
+                </h4>
               </div>
             </div>
           </div>
