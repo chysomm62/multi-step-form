@@ -64,7 +64,7 @@ const FourthStep = ({
                         </div>
                         <div>
                           <h4 className={styles.price}>
-                            $
+                            +$
                             <span ref={addOnRef}>
                               {isDurationToggled
                                 ? addOn.price * 12
@@ -87,9 +87,7 @@ const FourthStep = ({
 
               <div>
                 <h4 className={styles.price}>
-                  +$
-                  {/* {isDurationToggled ? addOn.price * 12 : addOn.price}/ */}
-                  {totalAmount.reduce((result, num) => result + num)}
+                  ${totalAmount.reduce((result, num) => result + num)}/
                   {isDurationToggled ? "yr" : "mo"}
                 </h4>
               </div>
@@ -98,7 +96,9 @@ const FourthStep = ({
           <div className={styles.buttons}>
             <Button onClick={() => setActive(active - 1)}>Go Back</Button>
 
-            <ContainedButton>Confirm</ContainedButton>
+            <ContainedButton onClick={() => setConfirm(true)}>
+              Confirm
+            </ContainedButton>
           </div>
         </>
       )}

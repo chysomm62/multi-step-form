@@ -7,10 +7,10 @@ function App() {
   const [active, setActive] = useState(1);
 
   return (
-    <div className={styles.app}>
+    <main className={styles.app}>
       <Form active={active} setActive={setActive} />
       <Sidebar active={active} setActive={setActive} />
-    </div>
+    </main>
   );
 }
 

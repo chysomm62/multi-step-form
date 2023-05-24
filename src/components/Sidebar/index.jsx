@@ -8,6 +8,12 @@ const Sidebar = ({ active, setActive }) => {
     { num: 4, name: "summary" },
   ];
 
+  const handleClick = (num) => {
+    if (active > num) {
+      setActive(num);
+    }
+  };
+
   return (
     <section className={styles.sidebar}>
       <div className={styles.tabs}>
@@ -15,7 +21,7 @@ const Sidebar = ({ active, setActive }) => {
           <div
             key={index}
             className={styles.tab}
-            // onClick={() => setActive(num.num)}
+            onClick={() => handleClick(num.num)}
           >
             <div
               className={
