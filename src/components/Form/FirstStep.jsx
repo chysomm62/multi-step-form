@@ -34,7 +34,6 @@ const FirstStep = ({ active, setActive }) => {
   const handleSubmit = (values, helpers) => {
     helpers.setSubmitting(true);
     setActive(active + 1);
-    console.log(values);
 
     setTimeout(() => {
       helpers.setSubmitting(false);
@@ -69,10 +68,9 @@ const FirstStep = ({ active, setActive }) => {
 
           return errors;
         }}
-        np
       >
         {(formik) => (
-          <Form>
+          <Form className={styles.form}>
             <div className={styles.fields}>
               <h1 className={styles.h1}>Personal info</h1>
               <p>Please provide your name, email address and phone number.</p>
@@ -104,7 +102,6 @@ const FirstStep = ({ active, setActive }) => {
                 Next Step
               </ContainedButton>
             </div>
-            {console.log(formik.values)}
           </Form>
         )}
       </Formik>

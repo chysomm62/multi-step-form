@@ -23,86 +23,88 @@ const FourthStep = ({
   );
 
   return (
-    <>
-      {confirm ? (
-        <Success />
-      ) : (
-        <>
-          <div className={styles.fields}>
-            <h1 className={styles.h1}>Finishing up</h1>
-            <p> Double-check everything looks OK before confirming.</p>
+    <section className={styles.form}>
+      <>
+        {confirm ? (
+          <Success />
+        ) : (
+          <>
+            <div className={styles.fields}>
+              <h1 className={styles.h1}>Finishing up</h1>
+              <p> Double-check everything looks OK before confirming.</p>
 
-            <div className={styles.summary}>
-              <div className={styles.plan}>
-                <div>
-                  <h3>
-                    {plans[planIndex].name}&nbsp;
-                    {isDurationToggled === false ? "(Monthly)" : "(Yearly)"}
-                  </h3>
-                  <button onClick={() => setActive(2)}>Change</button>
+              <div className={styles.summary}>
+                <div className={styles.plan}>
+                  <div>
+                    <h3>
+                      {plans[planIndex].name}&nbsp;
+                      {isDurationToggled === false ? "(Monthly)" : "(Yearly)"}
+                    </h3>
+                    <button onClick={() => setActive(2)}>Change</button>
+                  </div>
+                  <h4>
+                    $
+                    <span ref={planRef}>
+                      {isDurationToggled
+                        ? plans[planIndex].price * 12
+                        : plans[planIndex].price}
+                    </span>
+                    /{isDurationToggled ? "yr" : "mo"}
+                  </h4>
                 </div>
-                <h4>
-                  $
-                  <span ref={planRef}>
-                    {isDurationToggled
-                      ? plans[planIndex].price * 12
-                      : plans[planIndex].price}
-                  </span>
-                  /{isDurationToggled ? "yr" : "mo"}
-                </h4>
+                <div className={styles.addSum}>
+                  {addOns.map((addOn, index) => {
+                    if (selected.includes(index)) {
+                      totalAmount.push(
+                        isDurationToggled ? addOn.price * 12 : addOn.price
+                      );
+                      return (
+                        <div key={addOn.name} className={styles.addOn}>
+                          <div>
+                            <p>{addOn.name}</p>
+                          </div>
+                          <div>
+                            <h4 className={styles.price}>
+                              +$
+                              <span ref={addOnRef}>
+                                {isDurationToggled
+                                  ? addOn.price * 12
+                                  : addOn.price}
+                              </span>
+                              /{isDurationToggled ? "yr" : "mo"}
+                            </h4>
+                          </div>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
               </div>
-              <div className={styles.addSum}>
-                {addOns.map((addOn, index) => {
-                  if (selected.includes(index)) {
-                    totalAmount.push(
-                      isDurationToggled ? addOn.price * 12 : addOn.price
-                    );
-                    return (
-                      <div key={addOn.name} className={styles.addOn}>
-                        <div>
-                          <p>{addOn.name}</p>
-                        </div>
-                        <div>
-                          <h4 className={styles.price}>
-                            +$
-                            <span ref={addOnRef}>
-                              {isDurationToggled
-                                ? addOn.price * 12
-                                : addOn.price}
-                            </span>
-                            /{isDurationToggled ? "yr" : "mo"}
-                          </h4>
-                        </div>
-                      </div>
-                    );
-                  }
-                })}
+
+              <div className={styles.total}>
+                <div>
+                  <p>Total ({isDurationToggled ? "per year" : "per month"})</p>
+                </div>
+
+                <div>
+                  <h4 className={styles.price}>
+                    ${totalAmount.reduce((result, num) => result + num)}/
+                    {isDurationToggled ? "yr" : "mo"}
+                  </h4>
+                </div>
               </div>
             </div>
+            <div className={styles.buttons}>
+              <Button onClick={() => setActive(active - 1)}>Go Back</Button>
 
-            <div className={styles.total}>
-              <div>
-                <p>Total ({isDurationToggled ? "per year" : "per month"})</p>
-              </div>
-
-              <div>
-                <h4 className={styles.price}>
-                  ${totalAmount.reduce((result, num) => result + num)}/
-                  {isDurationToggled ? "yr" : "mo"}
-                </h4>
-              </div>
+              <ContainedButton onClick={() => setConfirm(true)}>
+                Confirm
+              </ContainedButton>
             </div>
-          </div>
-          <div className={styles.buttons}>
-            <Button onClick={() => setActive(active - 1)}>Go Back</Button>
-
-            <ContainedButton onClick={() => setConfirm(true)}>
-              Confirm
-            </ContainedButton>
-          </div>
-        </>
-      )}
-    </>
+          </>
+        )}
+      </>
+    </section>
   );
 };
 

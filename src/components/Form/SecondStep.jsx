@@ -12,46 +12,48 @@ const SecondStep = ({
   setActive,
 }) => {
   return (
-    <>
-      <div className={styles.fields}>
-        <h1 className={styles.h1}>Select your plan</h1>
-        <p> You have the option of monthly or yearly billing.</p>
-        <div className={styles.plans}>
-          {plans.map((plan, index) => (
-            <div
-              className={
-                planIndex === index
-                  ? `${styles.plan} ${styles.selected}`
-                  : styles.plan
-              }
-              key={plan.name}
-              onClick={() => setPlanIndex(index)}
-            >
-              <img src={plan.icon} alt={plan.name} />
-              <div>
-                <h3>{plan.name}</h3>
-                <h4>${plan.price}/mo</h4>
-                <p>2 months free</p>
+    <section className={styles.form}>
+      <>
+        <div className={styles.fields}>
+          <h1 className={styles.h1}>Select your plan</h1>
+          <p> You have the option of monthly or yearly billing.</p>
+          <div className={styles.plans}>
+            {plans.map((plan, index) => (
+              <div
+                className={
+                  planIndex === index
+                    ? `${styles.plan} ${styles.selected}`
+                    : styles.plan
+                }
+                key={plan.name}
+                onClick={() => setPlanIndex(index)}
+              >
+                <img src={plan.icon} alt={plan.name} />
+                <div>
+                  <h3>{plan.name}</h3>
+                  <h4>${plan.price}/mo</h4>
+                  <p>2 months free</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <Switch
+            isDurationToggled={isDurationToggled}
+            setIsDurationToggled={setIsDurationToggled}
+          />
         </div>
-        <Switch
-          isDurationToggled={isDurationToggled}
-          setIsDurationToggled={setIsDurationToggled}
-        />
-      </div>
-      <div className={styles.buttons}>
-        <Button onClick={() => setActive(active - 1)}>Go Back</Button>
+        <div className={styles.buttons}>
+          <Button onClick={() => setActive(active - 1)}>Go Back</Button>
 
-        <ContainedButton
-          className={styles.next}
-          onClick={() => setActive(active + 1)}
-        >
-          Next Step
-        </ContainedButton>
-      </div>
-    </>
+          <ContainedButton
+            className={styles.next}
+            onClick={() => setActive(active + 1)}
+          >
+            Next Step
+          </ContainedButton>
+        </div>
+      </>
+    </section>
   );
 };
 

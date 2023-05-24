@@ -93,11 +93,7 @@ const Form = ({ active, setActive }) => {
     }
   };
 
-  return (
-    <section className={styles.form}>
-      <>{getTabs()}</>
-    </section>
-  );
+  return <>{getTabs()}</>;
 };
 
 export default Form;
