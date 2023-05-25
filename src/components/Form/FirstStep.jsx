@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import ContainedButton from "../common/Button/ContainedButton";
 import Input from "../common/Input";
 import styles from "./Form.module.scss";
+import { PersistFormikValues } from "formik-persist-values";
 
 const initialValues = {
   name: "",
@@ -101,6 +102,7 @@ const FirstStep = ({ active, setActive }) => {
               Next Step
             </ContainedButton>
           </div>
+          <PersistFormikValues name="personal-info" />
         </Form>
       )}
     </Formik>
