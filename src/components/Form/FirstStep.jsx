@@ -42,70 +42,68 @@ const FirstStep = ({ active, setActive }) => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validate={(values) => {
-          const errors = {};
-          if (!values.name) {
-            errors.name = "Field is required";
-          }
-          if (!values.email) {
-            errors.email = "Field is required";
-          } else if (
-            !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
-          ) {
-            errors.email = "Invalid Email Address";
-          }
-          if (!values.phone) {
-            errors.phone = "Field is required";
-          } else if (
-            !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(values.phone)
-          ) {
-            errors.phone = "Invalid Phone Number";
-          }
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validate={(values) => {
+        const errors = {};
+        if (!values.name) {
+          errors.name = "Field is required";
+        }
+        if (!values.email) {
+          errors.email = "Field is required";
+        } else if (
+          !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
+        ) {
+          errors.email = "Invalid Email Address";
+        }
+        if (!values.phone) {
+          errors.phone = "Field is required";
+        } else if (
+          !/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(values.phone)
+        ) {
+          errors.phone = "Invalid Phone Number";
+        }
 
-          return errors;
-        }}
-      >
-        {(formik) => (
-          <Form className={styles.form}>
-            <div className={styles.fields}>
-              <h1 className={styles.h1}>Personal info</h1>
-              <p>Please provide your name, email address and phone number.</p>
-              <div>
-                {formData.map((data, index) => (
-                  <Field key={data.name} name={data.name}>
-                    {({ field, meta }) => (
-                      <>
-                        <Input
-                          {...field}
-                          {...data}
-                          error={<ErrorMessage name={data.name} />}
-                        />
-                      </>
-                    )}
-                  </Field>
-                ))}
-              </div>
+        return errors;
+      }}
+    >
+      {(formik) => (
+        <Form className={styles.form}>
+          <div className={styles.fields}>
+            <h1 className={styles.h1}>Personal info</h1>
+            <p>Please provide your name, email address and phone number.</p>
+            <div>
+              {formData.map((data, index) => (
+                <Field key={data.name} name={data.name}>
+                  {({ field, meta }) => (
+                    <>
+                      <Input
+                        {...field}
+                        {...data}
+                        error={<ErrorMessage name={data.name} />}
+                      />
+                    </>
+                  )}
+                </Field>
+              ))}
             </div>
-            <div className={styles.buttons}>
-              <div></div>
-              <ContainedButton
-                disabled={
-                  formik.isSubmitting || !(formik.isValid && formik.dirty)
-                }
-                className={styles.next}
-                type="submit"
-              >
-                Next Step
-              </ContainedButton>
-            </div>
-          </Form>
-        )}
-      </Formik>
-    </>
+          </div>
+          <div className={styles.buttons}>
+            <div></div>
+            <ContainedButton
+              disabled={
+                formik.isSubmitting || !(formik.isValid && formik.dirty)
+              }
+              className={styles.next}
+              type="submit"
+            >
+              Next Step
+            </ContainedButton>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 

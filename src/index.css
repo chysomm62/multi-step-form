@@ -46,7 +46,6 @@ body {
   font-size: 1rem;
   font-family: "Ubuntu", sans-serif;
   background-color: var(--Magnolia);
-  overflow: hidden;
 }
 
 #root {
