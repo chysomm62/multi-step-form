@@ -36,9 +36,9 @@ Users should be able to:
 
 ### Screenshot
 
-![Destop](/assets/images/Screenshot1.jpg)
+![Destop](./public/assets/images/Screenshot1.jpg)
 
-![Mobile](/assets/images/Screenshot2.jpg)
+![Mobile](./public/assets/images/Screenshot2.jpg)
 
 ### Links
 
