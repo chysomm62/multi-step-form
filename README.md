@@ -54,7 +54,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- SCSS
+- SCSS/SASS
 - [React](https://reactjs.org/) - JS library
 - [Vite.js](https://vitejs.dev/) - React framework
 
