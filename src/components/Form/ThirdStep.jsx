@@ -3,8 +3,8 @@ import Button from "../common/Button";
 import ContainedButton from "../common/Button/ContainedButton";
 import styles from "./Form.module.scss";
 
-const ThirdStep = ({ addOns, selected, setSelected }) => {
-  const { active, setActive } = useUser();
+const ThirdStep = ({ addOns }) => {
+  const { active, setActive, selected, setSelected } = useUser();
 
   const handleChange = (e, index) => {
     const { target } = e;

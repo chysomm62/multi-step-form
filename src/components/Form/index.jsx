@@ -43,13 +43,6 @@ const addOns = [
 ];
 
 const Form = () => {
-  // second step
-  const [planIndex, setPlanIndex] = useState(0);
-  const [isDurationToggled, setIsDurationToggled] = useState(false);
-
-  // third step
-  const [selected, setSelected] = useState([]);
-
   const { active } = useUser();
 
   const getTabs = () => {
@@ -57,33 +50,11 @@ const Form = () => {
       case 1:
         return <FirstStep />;
       case 2:
-        return (
-          <SecondStep
-            plans={plans}
-            planIndex={planIndex}
-            setPlanIndex={setPlanIndex}
-            isDurationToggled={isDurationToggled}
-            setIsDurationToggled={setIsDurationToggled}
-          />
-        );
+        return <SecondStep plans={plans} />;
       case 3:
-        return (
-          <ThirdStep
-            addOns={addOns}
-            selected={selected}
-            setSelected={setSelected}
-          />
-        );
+        return <ThirdStep addOns={addOns} />;
       case 4:
-        return (
-          <FourthStep
-            plans={plans}
-            planIndex={planIndex}
-            isDurationToggled={isDurationToggled}
-            addOns={addOns}
-            selected={selected}
-          />
-        );
+        return <FourthStep plans={plans} addOns={addOns} />;
       default:
         break;
     }

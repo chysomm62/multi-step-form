@@ -3,14 +3,15 @@ import Button from "../common/Button";
 import ContainedButton from "../common/Button/ContainedButton";
 import styles from "./Form.module.scss";
 
-const SecondStep = ({
-  plans,
-  planIndex,
-  setPlanIndex,
-  isDurationToggled,
-  setIsDurationToggled,
-}) => {
-  const { active, setActive } = useUser();
+const SecondStep = ({ plans }) => {
+  const {
+    active,
+    setActive,
+    planIndex,
+    setPlanIndex,
+    isDurationToggled,
+    setIsDurationToggled,
+  } = useUser();
   return (
     <section className={styles.form}>
       <>
