@@ -13,7 +13,7 @@ const initialValues = {
 
 const FirstStep = () => {
   const { active, setActive } = useUser();
-  console.log(active);
+
   const formData = [
     {
       name: "name",

@@ -1,3 +1,4 @@
+import { useUser } from "../../UserContext";
 import Button from "../common/Button";
 import ContainedButton from "../common/Button/ContainedButton";
 import styles from "./Form.module.scss";
@@ -8,9 +9,8 @@ const SecondStep = ({
   setPlanIndex,
   isDurationToggled,
   setIsDurationToggled,
-  active,
-  setActive,
 }) => {
+  const { active, setActive } = useUser();
   return (
     <section className={styles.form}>
       <>

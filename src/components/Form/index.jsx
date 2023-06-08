@@ -4,6 +4,7 @@ import SecondStep from "./SecondStep";
 import ThirdStep from "./ThirdStep";
 import FourthStep from "./FourthStep";
 import { useState } from "react";
+import { useUser } from "../../UserContext";
 
 const plans = [
   {
@@ -48,7 +49,8 @@ const Form = () => {
 
   // third step
   const [selected, setSelected] = useState([]);
-  const [totalAmount, setTotalAmount] = useState([]);
+
+  const { active } = useUser();
 
   const getTabs = () => {
     switch (active) {

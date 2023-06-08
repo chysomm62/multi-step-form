@@ -2,19 +2,19 @@ import { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.scss";
 import Button from "../common/Button";
 import ContainedButton from "../common/Button/ContainedButton";
+import { useUser } from "../../UserContext";
 
 const FourthStep = ({
   plans,
   planIndex,
   isDurationToggled,
-  setActive,
   addOns,
   selected,
-  active,
 }) => {
   const [confirm, setConfirm] = useState(false);
   const planRef = useRef(null);
   const addOnRef = useRef(null);
+  const { active, setActive } = useUser();
 
   const totalAmount = [];
 

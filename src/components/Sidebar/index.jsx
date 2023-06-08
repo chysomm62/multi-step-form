@@ -1,6 +1,8 @@
+import { useUser } from "../../UserContext";
 import styles from "./Sidebar.module.scss";
 
-const Sidebar = ({ active, setActive }) => {
+const Sidebar = () => {
+  const { active, setActive } = useUser();
   const tabs = [
     { num: 1, name: "your info" },
     { num: 2, name: "select plan" },
