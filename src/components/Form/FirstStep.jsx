@@ -3,6 +3,7 @@ import ContainedButton from "../common/Button/ContainedButton";
 import Input from "../common/Input";
 import styles from "./Form.module.scss";
 import { PersistFormikValues } from "formik-persist-values";
+import { useUser } from "../../UserContext";
 
 const initialValues = {
   name: "",
@@ -10,7 +11,9 @@ const initialValues = {
   phone: "",
 };
 
-const FirstStep = ({ active, setActive }) => {
+const FirstStep = () => {
+  const { active, setActive } = useUser();
+  console.log(active);
   const formData = [
     {
       name: "name",

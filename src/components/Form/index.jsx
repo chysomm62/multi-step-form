@@ -41,7 +41,7 @@ const addOns = [
   },
 ];
 
-const Form = ({ active, setActive }) => {
+const Form = () => {
   // second step
   const [planIndex, setPlanIndex] = useState(0);
   const [isDurationToggled, setIsDurationToggled] = useState(false);
@@ -53,7 +53,7 @@ const Form = ({ active, setActive }) => {
   const getTabs = () => {
     switch (active) {
       case 1:
-        return <FirstStep active={active} setActive={setActive} />;
+        return <FirstStep />;
       case 2:
         return (
           <SecondStep
@@ -62,8 +62,6 @@ const Form = ({ active, setActive }) => {
             setPlanIndex={setPlanIndex}
             isDurationToggled={isDurationToggled}
             setIsDurationToggled={setIsDurationToggled}
-            active={active}
-            setActive={setActive}
           />
         );
       case 3:
@@ -72,8 +70,6 @@ const Form = ({ active, setActive }) => {
             addOns={addOns}
             selected={selected}
             setSelected={setSelected}
-            active={active}
-            setActive={setActive}
           />
         );
       case 4:
@@ -82,10 +78,8 @@ const Form = ({ active, setActive }) => {
             plans={plans}
             planIndex={planIndex}
             isDurationToggled={isDurationToggled}
-            setActive={setActive}
             addOns={addOns}
             selected={selected}
-            active={active}
           />
         );
       default:
